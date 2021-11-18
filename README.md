@@ -7,4 +7,20 @@ The business question  for our project is whether the customers’ loan request 
 The bank loan status dataset which was obtained from Kaggle.com. The target variable Loan Status is a binary variable. And it is expressed as Full paid normal: 0, charged off overdue: 1. The goal of the target variable Loan Status in the multiple linear regression is to predict which classification the target variable ultimately belongs to : 0 or 1. In this case, we will use 0.5 (50%) as a critical value in the prediction model, which means more than 0.5 will suggest that this model is inclined to Full Paid. As for variables, there are 2 binary variables, 8 nominal variables and 11 continuous variables.
 - The data set is composed of 100000 observations and 19 variables:
 
-![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.20.18.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.20.18.png)
+## 4.Data Analysis
+The histogram shows that the company's loan overdue situation is more serious, reaching 27.6%, and the vast majority of customers' working years are customers who have worked for more than 10 years.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.24.44.png)
+The status of Home Ownership can also be seen that the customers are mainly renting and loan customers, and debt repayment accounts for the vast majority of loan purposes, which shows that the company's asset risk is greater, which can also be explained from the one hand the reason.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.25.09.png)
+In the case of Bankruptcies and Tax Liens, we can see that the vast majority of customers have relatively good credit records, and very few customers have historically bad credit records, so we can also judge that most customers are actually the main liquidity risk , Less vicious fraud clients.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.25.30.png)
+Through the pie chart, it is found that nearly 72% of the company's loan terms are short-term loans.This can explain the problem of high proportion of loan repayment in customer loan purposes from this perspective. Customer loans mainly use short-term debt repayment and provide liquidity as the Lord.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.25.46.png)
+## 5.Prediction Models and Results
+In order to verify the accuracy of the predicted data, three softwares are used to obtain the prediction results：1)SAS EM, 2)BASE SAS,3)PYTHON. In order to get a better prediction rate, in the latter two software BASE SAS,Python, we would compare the difference of the prediction score in the data set.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.26.09.png)
+### 5.1 Prediction Models 
+#### 5.1.1 Algorithm comparison
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.27.51.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.28.11.png)
