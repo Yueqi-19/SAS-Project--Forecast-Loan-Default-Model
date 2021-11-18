@@ -24,3 +24,28 @@ In order to verify the accuracy of the predicted data, three softwares are used 
 #### 5.1.1 Algorithm comparison
 ![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.27.51.png)
 ![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.28.11.png)
+
+Using the above different mining techniques to develop models, through comparative analysis, established a Logistic regression credit score model.
+#### 5.1.2 Predict Steps
+First use python to clean the data, remove some missing values. 
+Second,import the cleaned data to the  ‘import file ’node of SAS EM.
+Third ,we would use a cross-validation method in SAS EM software,the reason is that Cross-validation can "fully utilize" limited data to find suitable model parameters and prevent overfitting .
+So the sample is divided into three randomly separate parts, which training set is 70%, the validation set  is 20%, and the test set is 10%. 
+The training set is used to estimate the model, the validation set is used to determine the best model,select the model with the smallest average error rate ,and the test set is used to evaluate the performance of the best model(the accuracy rate of the best model).
+### 5.2 Results
+#### 5.2.1 SAS EM 
+In the data set split, the 70% is training and the 20% is validation, use these two subsets to determine the lowest average square error on the three algorithms and choose the best.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.26.32.png)
+- 1）The findings of the linear regression are shown below:
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.28.53.png)
+From above result, we can see that Annual_ income ,Credit_Score,Current_Loan_Amount,
+Monthly_Dept,home_Home_Mortgage,home_Own_Home,term_Long_Term are significant to our target variable churn, since they are associated with very small P values.
+- 2）The findings of the decision tree are shown below:
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.02.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.10.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.16.png)
+It can be seen from the output graph of the model that when a decision tree with 17 leaf nodes is generated, the misclassification rate of the training set is 21.8%, and the misclassification rate of the validation set is 21.6%. In the training set, 46,740 of "good customers"(Full paid normal: 0) have 45,740 correctly classified, and 17,608 of "bad customers"(charged off overdue: 1) have 4,121 correctly classified.
+- 3）Since  the target variable Loan_stauts is binary, a logistic regression was run in SAS EM using stepwise method:
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.22.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.27.png)
+It can be seen from the above training set graph that the overall model accuracy rate is 1-0.21 = 79%, and the model predicts 98.98% of good customers(Full paid normal: 0) as good customers and 1% of good customers as bad customers. 76% of bad customers(charged off overdue: 1) are predicted to be good customers, and the remaining 23% of bad customers are predicted to be bad customers.
