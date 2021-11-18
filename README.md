@@ -6,3 +6,5 @@ The business question  for our project is whether the customers’ loan request 
 ## 3.Data Description
 The bank loan status dataset which was obtained from Kaggle.com. The target variable Loan Status is a binary variable. And it is expressed as Full paid normal: 0, charged off overdue: 1. The goal of the target variable Loan Status in the multiple linear regression is to predict which classification the target variable ultimately belongs to : 0 or 1. In this case, we will use 0.5 (50%) as a critical value in the prediction model, which means more than 0.5 will suggest that this model is inclined to Full Paid. As for variables, there are 2 binary variables, 8 nominal variables and 11 continuous variables.
 - The data set is composed of 100000 observations and 19 variables:
+
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.20.18.png)
