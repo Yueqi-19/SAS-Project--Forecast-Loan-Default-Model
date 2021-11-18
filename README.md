@@ -49,3 +49,46 @@ It can be seen from the output graph of the model that when a decision tree with
 ![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.22.png)
 ![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.27.png)
 It can be seen from the above training set graph that the overall model accuracy rate is 1-0.21 = 79%, and the model predicts 98.98% of good customers(Full paid normal: 0) as good customers and 1% of good customers as bad customers. 76% of bad customers(charged off overdue: 1) are predicted to be good customers, and the remaining 23% of bad customers are predicted to be bad customers.
+##### 5.2.1.1Which one is the best model
+In three models: the smallest average squared error rate is 0.15347=15%, the best model is the Logistic Regression Model.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.34.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.41.png)
+In addition ,the ROC curve also showed the performance of the model.
+From the above plot,better performance can be reflected by the curve near the upper left corner.
+So on the other hand, near the upper left corner is the logistic regression model(red line), from which we can know that the logistic regression model is the best model in prediction.
+##### 5.2.1.2 Accuracy Measures in SAS EM:
+In test set:Use the logistic regression model on the training set (90%)to predict the last 10% test 
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.47.png)
+
+The accuracy rate of test set in logistic regression model-Model Comparison(2):
+Note:Loan status (0) is expressed as Full paid, Loan status (1) is expressed as charged off, because the target variable is loan status, so the accuracy rate is clearly expressed here as the correct rate of predicting the passing loan.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.29.55.png)
+Accuracy rate=(TP+TN)/(TP+FN+FP+TN)=1-Misclassification Rate=1-21%=79%
+The logistic regression model predicted 79% of correct results,this means that the loan classifier performs very well in identifying fraudulent customers.
+#### 5.2.2 Base SAS(Predict Score1)
+Note:
+P_Loan_Status1    Predicted: Loan_Status=1
+
+P_Loan_Status0    Predicted: Loan_Status=0
+
+
+To get the Loan Status ’ predicted probability, use the optimized SAS code from the score node,save the SAS optimized code in the same file path and run it in Base SAS.
+The predicted score of Loan Status(0) and  Loan Status(1):(pick up 10 observations)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.30.05.png)
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.30.13.png)
+When we move to the probability of classification，we notice that the first 10 observations have the same probability in both status 0 and 1. Which means they have 72% of probability to be fully-paid, and 27% to be charged off. which means the customer's credit score is good and the bank can lend to the customer.
+#### 5.2.3 Python-(Predict Score2)
+To get the Loan Status predicted score:78%
+Train the model and give a score, the accuracy rate is 78.88%, and the prediction success rate is high.
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.30.21.png)
+## 6.Conclusions
+![image](https://github.com/Yueqi-19/SAS-Project--Forecast-Loan-Default-Model/blob/main/SAS%20IMG/%E6%88%AA%E5%B1%8F2021-11-18%20%E4%B8%8A%E5%8D%882.30.28.png)
+The reason why we use three softwares to score customers is to verify whether the logistic regression models obtained by these three softwares have too much deviation. As can be seen from the above figure, the deviation is not big，the error is very small, only from 0.1% to 0.7%. The accuracy rate of the model is between 72% -79%. The reason why the BASE SAS software score is the smallest is because we took the average of 10 observations and selected the average model accuracy rate.
+To the most important, based on the critical value of 0.5, the value of 70% is greater than 0.5. It can be inferred that the bank can lend to the customer and the customer has good credit.
+
+Our experiences and suggestions:
+In this project we learned a lot, applied the knowledge of this class, and learned how to use different software to score credit cards.
+Credit scoring is actually the application of scoring technology in credit risk management. The establishment of a credit score is based on the statistical results of a large number of data, which has very high accuracy and reliability. The application credit score is used exclusively for the credit evaluation of new applicants. It can quickly and effectively identify and divide the advantages and disadvantages of customers through the relevant identity information filled out by the applicant, prevent customers with bad credit from applying for credit cards, improve the credit level of cardholders, realize the precaution of credit card business risks, and help banks establish The first credit risk safety net. 
+However, the credit card application scoring model designed in this paper cannot replace the credit scoring system. Only with the support of the credit scoring system will it be possible to obtain rich and complete customer information. With the development of the credit card business and the credit status of the entire society, the key factors that determine customer credit will also continue to change. Therefore, data mining methods can Flexible use. By discovering the rules in the customer information, finding out the elements that the bank needs to focus on, it plays a directional guiding role for the verification and verification of the bank. In this way, both efficiency and efficiency are guaranteed. In addition, some new models discovered through data mining can further adjust the customer credit scoring system, thereby playing an important role in improving the credit scoring system in the future. The credit card scoring table model constructed in this paper uses a variety of data modeling and mining techniques, which can effectively, objectively, accurately and consistently make effective credit evaluations for credit card applicants, which has a certain auxiliary effect on the actual credit card application scoring business. 
+Due to the short research time, coupled with the limitations of own knowledge, information, experience, and energy, this credit scoring model still has some limitations and needs to be developed, mainly in the following aspects because this research involves some commercial banks Secretly, the data samples obtained are very limited. Even the data obtained has problems in all aspects of data quality. Many key data have been fuzzified, and at the same time, the missing values ​​are serious, which leads to a decrease in the accuracy of the scoring model. The data obtained in this research is based on the customer data that has been scored by bank credit staff, but the credit staff itself has certain subjective factors, and there are certain errors and inconsistencies in the classification of customers, so this model will inevitably produce this aspect error. 
+Since the United States has a very sound personal credit system, the data related to personal credit is distributed among various functional departments and related units, and between various departments and banks. In this situation, the credit risk assessment of the credit card mainly relies on the data characteristics of the customer, which is used to evaluate the customer's credit status. Banks may still face some credit risks in the process of credit card approval. This credit card scoring model is only a preliminary attempt to use data mining techniques to analyze the customer data of the issuing bank to assist the risk management of the issuing bank. With the development of the American personal credit system, the improvement of the corresponding legal environment, the development of informatization, the realization of information resource sharing, the strengthening of the national personal credit concept and the recognition of credit, data mining technology will become the bank ’s credit risk management, customers An important tool for relationship management, financial product development, marketing decision analysis, and improved banking management.
